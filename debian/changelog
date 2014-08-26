@@ -1,0 +1,11 @@
+ros-indigo-cob-lookat-controller (0.5.4-0saucy) saucy; urgency=high
+
+  * added explicit default argument queue_size
+  * move launch files to cob_robots
+  * fix dependency-hell on multiple cores
+  * moved cob_lookat_controller
+  * Contributors: Alexander Bubeck, Felix Messmer, ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Mon, 25 Aug 2014 22:00:00 -0000
+
+
