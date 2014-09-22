@@ -1,0 +1,28 @@
+ros-indigo-cob-control-mode-adapter (0.6.1-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Sun, 21 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.6.0-0saucy) saucy; urgency=high
+
+  * resolve namespace problem with velocity controller topics hardware vs. simulation
+  * resolve namespace problem of controller_manager hardware vs. simulation
+  * new package cob_control_mode_adapter
+  * Contributors: ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.5.4-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 26 Aug 2014 08:26:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.1.0-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 26 Aug 2014 08:23:00 -0000
+
+
