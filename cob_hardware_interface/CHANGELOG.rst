@@ -2,6 +2,9 @@
 Changelog for package cob_hardware_interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.1 (2014-09-22)
+------------------
+
 0.6.0 (2014-09-18)
 ------------------
 * debug threading, do not start controllers from hardware_interface directly
