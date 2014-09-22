@@ -1,0 +1,39 @@
+ros-indigo-cob-frame-tracker (0.6.1-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Sun, 21 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-frame-tracker (0.6.0-0saucy) saucy; urgency=high
+
+  * update version number
+  * update changelog
+  * beautify package xml and CMakeLists
+  * add missing dependencies
+  * update interactive marker when not tracking
+  * introducing PID for frame_tracker, generalization of interactive_frame_target
+  * new menu entry: reset_tracking
+  * make frame_tracker and interactive_marker more generic to be used with non-lookat twist_control
+  * moved frame_tracker to separate package
+  * update interactive marker when not tracking
+  * introducing PID for frame_tracker, generalization of interactive_frame_target
+  * new menu entry: reset_tracking
+  * make frame_tracker and interactive_marker more generic to be used with non-lookat twist_control
+  * moved frame_tracker to separate package
+  * Contributors: Felix Messmer, Florian Weisshardt, ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-frame-tracker (0.5.4-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 26 Aug 2014 08:26:00 -0000
+
+ros-indigo-cob-frame-tracker (0.1.0-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 26 Aug 2014 08:23:00 -0000
+
+
