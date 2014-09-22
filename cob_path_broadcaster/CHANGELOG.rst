@@ -2,6 +2,9 @@
 Changelog for package cob_path_broadcaster
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.1 (2014-09-22)
+------------------
+
 0.6.0 (2014-09-18)
 ------------------
 * erge branch 'velocity_interface_controller_indigo' of github.com:ipa-fxm-cm/cob_control into velocity_interface_controller_indigo
