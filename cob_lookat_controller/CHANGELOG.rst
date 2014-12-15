@@ -2,6 +2,11 @@
 Changelog for package cob_lookat_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.2 (2014-12-15)
+------------------
+* adapt virtual lookat_driver to new datatypes
+* Contributors: ipa-fxm
+
 0.6.1 (2014-09-22)
 ------------------
 * Merge branch 'indigo_dev' into indigo_release_candidate
