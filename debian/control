@@ -1,0 +1,12 @@
+Source: ros-indigo-cob-hardware-interface
+Section: misc
+Priority: extra
+Maintainer: Felix Messmer <fxm@ipa.fhg.de>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-brics-actuator, ros-indigo-catkin, ros-indigo-controller-manager, ros-indigo-hardware-interface, ros-indigo-sensor-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-indigo-cob-hardware-interface
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-brics-actuator, ros-indigo-controller-manager, ros-indigo-hardware-interface, ros-indigo-sensor-msgs
+Description: This package implements the cob_hardware_interface. The interface uses topic communication rather than direct pointer access to the drivers. I.e. it publishs the desired velocity to a topic and reads from the /joint_states topic. Thus, it can be used for both velocity-controlled real hardware as well as velocity-controlled simulation (i.e. using the JointVelocityControllers)
