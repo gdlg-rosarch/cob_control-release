@@ -2,6 +2,12 @@
 Changelog for package cob_lookat_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.4 (2014-12-16)
+------------------
+
+0.6.3 (2014-12-16)
+------------------
+
 0.6.2 (2014-12-15)
 ------------------
 * adapt virtual lookat_driver to new datatypes
