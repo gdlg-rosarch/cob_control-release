@@ -1,0 +1,65 @@
+ros-indigo-cob-lookat-controller (0.6.5-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-lookat-controller (0.6.4-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Mon, 15 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-lookat-controller (0.6.3-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Mon, 15 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-lookat-controller (0.6.2-0saucy) saucy; urgency=high
+
+  * adapt virtual lookat_driver to new datatypes
+  * Contributors: ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Sun, 14 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-lookat-controller (0.6.1-0saucy) saucy; urgency=high
+
+  * Merge branch 'indigo_dev' into indigo_release_candidate
+  * missing dependencies
+  * Contributors: Florian Weisshardt, ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Sun, 21 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-lookat-controller (0.6.0-0saucy) saucy; urgency=high
+
+  * update changelog
+  * Merge branch 'indigo_dev' of github.com:ipa-fxm/cob_control into velocity_interface_controller_indigo
+  * Merge branch 'indigo_dev' into velocity_interface_controller_indigo
+  * beautify package xml and CMakeLists
+  * add missing dependencies
+  * merge with stash
+  * merge with fxm
+  * comparing lookat_controller and twist_controller
+  * moved frame_tracker to separate package
+  * debug stuff for lookat_controller
+  * merge with stash
+  * merge with fxm
+  * comparing lookat_controller and twist_controller
+  * moved frame_tracker to separate package
+  * debug stuff for lookat_controller
+  * Contributors: Christian Ehrmann, Felix Messmer, Florian Weisshardt, ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-lookat-controller (0.5.4-0saucy) saucy; urgency=high
+
+  * added explicit default argument queue_size
+  * move launch files to cob_robots
+  * fix dependency-hell on multiple cores
+  * moved cob_lookat_controller
+  * Contributors: Alexander Bubeck, Felix Messmer, ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Mon, 25 Aug 2014 22:00:00 -0000
+
+
