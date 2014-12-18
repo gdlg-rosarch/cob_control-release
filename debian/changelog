@@ -1,0 +1,84 @@
+ros-indigo-cob-control-mode-adapter (0.6.6-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.6.5-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.6.4-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Mon, 15 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.6.3-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Mon, 15 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.6.2-0saucy) saucy; urgency=high
+
+  * Merge branch 'indigo_dev' into indigo_release_candidate
+  * fix cppcheck errors
+  * set default timeout for switching back to JTC to 0.3sec
+  * uncommment non default controllers
+  * moved and fixed switch log message
+  * switched to enum instead of string
+  * mutex/locks for thread safety
+  * moved switch logic to update loop
+  * init timestamps to zero instead of current time, prevent timing problems at start-up
+  * Merge pull request #9 <https://github.com/ipa320/cob_control/issues/9> from thiagodefreitas/indigo_new_structure
+    More detailed LOG information for the controllers switch
+  * More detailed LOG information for the controllers switch
+  * remove timeout and report with ROS_WARN
+  * Merge pull request #4 <https://github.com/ipa320/cob_control/issues/4> from ipa-fxm/indigo_new_structure
+    update dependencies
+  * update dependencies
+  * Merge pull request #3 <https://github.com/ipa320/cob_control/issues/3> from ipa-fxm/indigo_new_structure
+    Indigo new structure
+  * extend timeout
+  * adapt namespaces for cartesian_controller to new structure
+  * adapt control_mode_adapter to new structure
+  * merge_cm
+  * temporary commit
+  * publish to JointGroup controllers
+  * null-space syncMM
+  * cleanup, restructure and fix
+  * Contributors: Florian Weisshardt, Mathias Lüdtke, ipa-fmw, ipa-fxm, ipa-fxm-cm, thiagodefreitas
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Sun, 14 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.6.1-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Sun, 21 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.6.0-0saucy) saucy; urgency=high
+
+  * resolve namespace problem with velocity controller topics hardware vs. simulation
+  * resolve namespace problem of controller_manager hardware vs. simulation
+  * new package cob_control_mode_adapter
+  * Contributors: ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.5.4-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 26 Aug 2014 08:26:00 -0000
+
+ros-indigo-cob-control-mode-adapter (0.1.0-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 26 Aug 2014 08:23:00 -0000
+
+
