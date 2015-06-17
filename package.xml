@@ -1,6 +1,6 @@
 <package>
   <name>cob_control</name>
-  <version>0.6.6</version>
+  <version>0.6.7</version>
   <description>cob_control meta-package</description>
 
 
@@ -20,8 +20,6 @@
   <run_depend>cob_control_mode_adapter</run_depend>
   <run_depend>cob_footprint_observer</run_depend>
   <run_depend>cob_frame_tracker</run_depend>
-  <run_depend>cob_hardware_interface</run_depend>
-  <run_depend>cob_lookat_controller</run_depend>
   <run_depend>cob_path_broadcaster</run_depend>
   <run_depend>cob_trajectory_controller</run_depend>
   <run_depend>cob_twist_controller</run_depend>
