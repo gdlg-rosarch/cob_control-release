@@ -1,0 +1,104 @@
+ros-indigo-cob-cartesian-controller (0.6.8-0saucy) saucy; urgency=high
+
+  * merge with release candidate
+  * package renaming: cob_path_broadcaster -> cob_cartesian_controller
+  * Contributors: ipa-fxm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 16 Jun 2015 22:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.6.7-0saucy) saucy; urgency=high
+
+  * restructure namespaces for parameters of cartesian controllers
+  * beautify CMakeLists
+  * remove obsolete files
+  * testing
+  * missing files
+  * new prog files
+  * new features
+  * new files
+  * new movement files
+  * clean up cob_path_broadcaster
+  * new features
+  * cleaned up
+  * update merged2
+  * feature reachable_goal
+  * fixed a bug in circular interpolation
+  * test
+  * Modified for the new structure
+  * Contributors: Christian Ehrmann, ipa-fxm, ipa-fxm-cm, ipa-fxm-fm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 16 Jun 2015 22:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.6.6-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.6.5-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.6.4-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Mon, 15 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.6.3-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Mon, 15 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.6.2-0saucy) saucy; urgency=high
+
+  * Merge branch 'indigo_dev' into indigo_release_candidate
+  * few more changes after testing new structure
+  * cleaning up
+  * merge_cm
+  * temporary commit
+  * Cleaned up and fixed some functions
+  * Cleaned up and fixed some functions
+  * Contributors: Florian Weisshardt, ipa-fxm, ipa-fxm-cm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Sun, 14 Dec 2014 23:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.6.1-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Sun, 21 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.6.0-0saucy) saucy; urgency=high
+
+  * erge branch 'velocity_interface_controller_indigo' of github.com:ipa-fxm-cm/cob_control into velocity_interface_controller_indigo
+  * new command move_circ added
+  * New CMake File and cob_articulation got new functions
+  * fixed install tags
+  * catkin_lint'ing
+  * merge with velocity_interface_controller (hydro)
+  * fix ascii characters
+  * Added xml parser for motion primitives move_ptp and move_lin
+  * beautify package xml and CMakeLists
+  * new package cob_path_broadcaster
+  * new package cob_path_broadcaster
+  * Contributors: Christoph Mark, Felix Messmer, ipa-fxm, ipa-fxm-cm
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Wed, 17 Sep 2014 22:00:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.5.4-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 26 Aug 2014 08:26:00 -0000
+
+ros-indigo-cob-cartesian-controller (0.1.0-0saucy) saucy; urgency=high
+
+
+
+ -- Felix Messmer <fxm@ipa.fhg.de>  Tue, 26 Aug 2014 08:23:00 -0000
+
+
