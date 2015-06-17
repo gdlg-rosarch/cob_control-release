@@ -1,3 +1,35 @@
+## cob_control (indigo) - 0.6.7-0
+
+The packages in the `cob_control` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --rosdistro indigo --track indigo cob_control` on `Wed, 17 Jun 2015 11:13:18 -0000`
+
+These packages were released:
+- `cob_base_velocity_smoother`
+- `cob_collision_velocity_filter`
+- `cob_control`
+- `cob_control_mode_adapter`
+- `cob_footprint_observer`
+- `cob_frame_tracker`
+- `cob_model_identifier`
+- `cob_omni_drive_controller`
+- `cob_path_broadcaster`
+- `cob_trajectory_controller`
+- `cob_twist_controller`
+
+Version of package(s) in repository `cob_control`:
+- upstream repository: https://github.com/ipa320/cob_control.git
+- release repository: https://github.com/ipa320/cob_control-release.git
+- rosdistro version: `0.6.6-0`
+- old version: `0.6.6-0`
+- new version: `0.6.7-0`
+
+Versions of tools used:
+- bloom version: `0.5.20`
+- catkin_pkg version: `0.2.8`
+- rosdep version: `0.11.2`
+- rosdistro version: `0.4.2`
+- vcstools version: `0.1.36`
+
+
 ## cob_control (indigo) - 0.6.6-0
 
 The packages in the `cob_control` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --rosdistro indigo --track indigo cob_control` on `Thu, 18 Dec 2014 09:56:51 -0000`
