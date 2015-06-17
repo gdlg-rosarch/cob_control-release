@@ -1,13 +1,38 @@
-#ifndef AUGMENTED_SOLVER_HPP
-#define AUGMENTED_SOLVER_HPP
+/*!
+ *****************************************************************
+ * \file
+ *
+ * \note
+ *   Copyright (c) 2014 \n
+ *   Fraunhofer Institute for Manufacturing Engineering
+ *   and Automation (IPA) \n\n
+ *
+ *****************************************************************
+ *
+ * \note
+ *   Project name: care-o-bot
+ * \note
+ *   ROS stack name: cob_control
+ * \note
+ *   ROS package name: cob_twist_controller
+ *
+ * \author
+ *   Author: Felix Messmer, email: Felix.Messmer@ipa.fraunhofer.de
+ *
+ * \date Date of creation: April, 2014
+ *
+ * \brief
+ *   This package provides the definitions of an inverse kinematics solver.
+ *
+ ****************************************************************/
+#ifndef AUGMENTED_SOLVER_H
+#define AUGMENTED_SOLVER_H
 
-#include <math.h>
 #include <kdl/chainiksolver.hpp>
 #include <kdl/chainjnttojacsolver.hpp>
 #include <Eigen/Core>
-#include <Eigen/LU>
-#include <Eigen/SVD>
-#include <iostream>
+
+#include "cob_twist_controller/augmented_solver_data_types.h"
 
 /**
 * Implementation of a inverse velocity kinematics algorithm based
@@ -18,32 +43,7 @@
 *
 * @ingroup KinematicFamily
 */
-
-struct AugmentedSolverParams {
-    int damping_method;
-    double eps;
-    double damping_factor;
-    double lambda0;
-    double wt;
-    double deltaRMax;
-    
-    bool base_compensation;
-    bool base_active;
-    double base_ratio;
-};
-
-enum DampingMethodTypes {
-    MANIPULABILITY = 0,
-    MANIPULABILITY_RATE = 1,
-    TRACKING_ERROR = 2,
-    SINGULAR_REGION = 3,
-    CONSTANT = 4,
-    TRUNCATION = 5
-};
-
-
-
-class augmented_solver
+class AugmentedSolver
 {
 public:
     /**
@@ -57,26 +57,56 @@ public:
      * default: 150
      *
      */
-    augmented_solver(const KDL::Chain& chain, double eps=0.001, int maxiter=5);
-    ~augmented_solver();
+    AugmentedSolver(const KDL::Chain& chain, double eps=0.001) :
+        chain_(chain),
+        jac_(chain_.getNrOfJoints()),
+        jnt2jac_(chain_)
+    {
+    }
+
+    virtual ~AugmentedSolver() {};
     
     /** CartToJnt for chain using SVD including base and various DampingMethods **/
-    virtual int CartToJnt(const KDL::JntArray& q_in, KDL::Twist& v_in, KDL::JntArray& qdot_out);
-    
-    /** not (yet) implemented. */
-    virtual int CartToJnt(const KDL::JntArray& q_init, const KDL::FrameVel& v_in, KDL::JntArrayVel& q_out){return -1;};
-    
-    void SetAugmentedSolverParams(AugmentedSolverParams params){params_ = params;}
+    virtual int CartToJnt(const KDL::JntArray& q_in,
+                          const KDL::JntArray& last_q_dot,
+                          const KDL::Twist& v_in,
+                          const KDL::Frame &base_position,
+                          const KDL::Frame &chain_base,
+                          KDL::JntArray& qdot_out);
+
+    inline virtual int CartToJnt(const KDL::JntArray& q_in,
+                                 const KDL::JntArray& last_q_dot,
+                                 const KDL::Twist& v_in,
+                                 KDL::JntArray& qdot_out)
+    {
+        KDL::Frame dummy;
+        dummy.p = KDL::Vector(0,0,0);
+        dummy.M = KDL::Rotation::Quaternion(0,0,0,0);
+        return CartToJnt(q_in, last_q_dot, v_in, dummy, dummy, qdot_out);
+    }
+
+    inline void SetAugmentedSolverParams(AugmentedSolverParams params)
+    {
+        params_ = params;
+    }
+
+    inline AugmentedSolverParams GetAugmentedSolverParams()
+    {
+        return params_;
+    }
 
 private:
-    const KDL::Chain chain;
-    KDL::Jacobian jac;
-    KDL::ChainJntToJacSolver jnt2jac;
-    int maxiter;
-    Eigen::MatrixXd Jcm1;
-    double wkm1;
-    bool initial_iteration;
-    
+    const KDL::Chain chain_;
+    KDL::Jacobian jac_, jac_base_;
+    KDL::ChainJntToJacSolver jnt2jac_;
     AugmentedSolverParams params_;
+
+    /**
+     * Adjustment of the member Jacobian
+     * @param q_in Input joint positions.
+     * @param base_position Current base position.
+     * @param chain_base Current frame of the chain base.
+     */
+    void adjustJac(const KDL::JntArray& q_in, const KDL::Frame &base_position, const KDL::Frame &chain_base);
 };
 #endif
