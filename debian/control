@@ -1,0 +1,12 @@
+Source: ros-indigo-cob-path-broadcaster
+Section: misc
+Priority: extra
+Maintainer: Felix Messmer <fxm@ipa.fhg.de>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin, ros-indigo-cmake-modules, ros-indigo-cob-srvs, ros-indigo-geometry-msgs, ros-indigo-kdl-conversions, ros-indigo-orocos-kdl, ros-indigo-roscpp, ros-indigo-roslib, ros-indigo-std-msgs, ros-indigo-std-srvs, ros-indigo-tf, ros-indigo-visualization-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-indigo-cob-path-broadcaster
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-cob-srvs, ros-indigo-geometry-msgs, ros-indigo-kdl-conversions, ros-indigo-orocos-kdl, ros-indigo-roscpp, ros-indigo-roslib, ros-indigo-rospy, ros-indigo-std-msgs, ros-indigo-std-srvs, ros-indigo-tf, ros-indigo-visualization-msgs
+Description: This package provides nodes that broadcast tf-frames along various (model-based) Cartesian paths. The tf-frames can be used as targets for the cob_frame_tracker/cob_twist_controller
