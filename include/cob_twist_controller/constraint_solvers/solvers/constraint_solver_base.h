@@ -30,58 +30,82 @@
 #define CONSTRAINT_SOLVER_BASE_H_
 
 #include <Eigen/Core>
-#include <Eigen/SVD>
 #include <kdl/jntarray.hpp>
-#include "cob_twist_controller/augmented_solver_data_types.h"
+#include <boost/shared_ptr.hpp>
+#include <cob_twist_controller/inverse_jacobian_calculations/inverse_jacobian_calculation.h>
+#include "cob_twist_controller/damping_methods/damping_base.h"
+#include "cob_twist_controller/constraints/constraint_base.h"
+#include "cob_twist_controller/cob_twist_controller_data_types.h"
+#include "cob_twist_controller/task_stack/task_stack_controller.h"
 
 /// Base class for solvers, defining interface methods.
+template <typename PINV = PInvBySVD>
 class ConstraintSolver
 {
     public:
-        static const double DAMPING_LIMIT = 1.0e-9; ///< const. value for zero comparison with damping factor
-
         /**
          * The interface method to solve the inverse kinematics problem. Has to be implemented in inherited classes.
          * @param inCartVelocities The input velocities vector (in cartesian space).
-         * @param q The current joint positions.
-         * @param last_q_dot The last joint velocities.
+         * @param joint_states The joint states with history.
          * @return The calculated new joint velocities.
          */
-        virtual Eigen::MatrixXd solve(const Eigen::VectorXd &inCartVelocities, const KDL::JntArray& q, const KDL::JntArray& last_q_dot) const = 0;
+        virtual Eigen::MatrixXd solve(const Vector6d_t& in_cart_velocities,
+                                      const JointStates& joint_states) = 0;
 
         /**
-         * Inline method to set the damping factor
-         * @param damping The new damping factor
+         * Inline method to set the damping
+         * @param damping The new damping
          */
-        inline void setDampingFactor(double damping)
+        inline void setDamping(boost::shared_ptr<DampingBase>& damping)
         {
-            this->dampingFactor_ = damping;
+            this->damping_ = damping;
         }
 
-        virtual ~ConstraintSolver() = 0;
+        /**
+         * Set all created constraints in a (priorized) set.
+         * @param constraints: All constraints ordered according to priority.
+         */
+        inline void setConstraints(std::set<ConstraintBase_t>& constraints)
+        {
+            this->constraints_.clear();
+            this->constraints_ = constraints;
+        }
+
+        /**
+         * Calls destructor on all objects and clears the set
+         */
+        inline void clearConstraints()
+        {
+            this->constraints_.clear();
+        }
+
+        /**
+         * Method to initialize the solver if necessary
+         */
+        virtual void setJacobianData(const Matrix6Xd_t& jacobian_data)
+        {
+            this->jacobian_data_ = jacobian_data;
+        }
+
+        virtual ~ConstraintSolver()
+        {
+            this->clearConstraints();
+        }
 
     protected:
 
-        ConstraintSolver(AugmentedSolverParams &asParams,
-                         Matrix6Xd &jacobianData)
-                         : asParams_(asParams),
-                           jacobianData_(jacobianData),
-                           dampingFactor_(0.0)
+        ConstraintSolver(const TwistControllerParams& params, TaskStackController_t& task_stack_controller)
+                         : params_(params), task_stack_controller_(task_stack_controller)
         {
-
         }
 
-        /**
-         * Base method for calculation of the pseudoinverse Jacobian by using SVD.
-         * @param svd The singular value decomposition object of a Jacobian.
-         * @return A pseudoinverse Jacobian
-         */
-        Eigen::MatrixXd calculatePinvJacobianBySVD(Eigen::JacobiSVD<Eigen::MatrixXd> svd) const;
-
-
-        const AugmentedSolverParams &asParams_; ///< References the augmented solver parameters.
-        const Matrix6Xd &jacobianData_; ///< References the current Jacobian (matrix data only).
-        double dampingFactor_; ///< The currently set damping factor.
+        /// set inserts sorted (default less operator); if element has already been added it returns an iterator on it.
+        std::set<ConstraintBase_t> constraints_; ///< Set of constraints.
+        const TwistControllerParams& params_; ///< References the inv. diff. kin. solver parameters.
+        Matrix6Xd_t jacobian_data_; ///< References the current Jacobian (matrix data only).
+        boost::shared_ptr<DampingBase> damping_; ///< The currently set damping method.
+        PINV pinv_calc_; ///< An instance that helps solving the inverse of the Jacobian.
+        TaskStackController_t& task_stack_controller_; ///< Reference to the task stack controller.
 };
 
 #endif /* CONSTRAINT_SOLVER_BASE_H_ */
