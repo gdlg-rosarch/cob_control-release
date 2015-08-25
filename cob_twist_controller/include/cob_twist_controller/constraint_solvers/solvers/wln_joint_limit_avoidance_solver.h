@@ -30,7 +30,7 @@
 #ifndef JOINT_LIMIT_AVOIDANCE_SOLVER_H_
 #define JOINT_LIMIT_AVOIDANCE_SOLVER_H_
 
-#include "cob_twist_controller/augmented_solver_data_types.h"
+#include "cob_twist_controller/cob_twist_controller_data_types.h"
 #include "cob_twist_controller/constraint_solvers/solvers/weighted_least_norm_solver.h"
 
 /// Implementation of ConstraintSolver to solve inverse kinematics with joint limit avoidance
@@ -39,10 +39,8 @@ class WLN_JointLimitAvoidanceSolver : public WeightedLeastNormSolver
 {
     public:
 
-        WLN_JointLimitAvoidanceSolver(AugmentedSolverParams &asParams,
-                                  Matrix6Xd &jacobianData)
-                                  : WeightedLeastNormSolver(asParams,
-                                                            jacobianData)
+        WLN_JointLimitAvoidanceSolver(const TwistControllerParams& params, TaskStackController_t& task_stack_controller)
+                                  : WeightedLeastNormSolver(params, task_stack_controller)
         {
 
         }
@@ -62,7 +60,7 @@ class WLN_JointLimitAvoidanceSolver : public WeightedLeastNormSolver
          * @param q_dot The current joint velocities.
          * @return Diagonal weighting matrix that adapts the Jacobian.
          */
-        virtual Eigen::MatrixXd calculateWeighting(const KDL::JntArray& q, const KDL::JntArray& q_dot) const;
+        virtual Eigen::MatrixXd calculateWeighting(const JointStates& joint_states);
 };
 
 #endif /* JOINT_LIMIT_AVOIDANCE_SOLVER_H_ */
