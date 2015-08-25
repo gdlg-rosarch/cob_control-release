@@ -37,6 +37,11 @@
 class LimiterBase
 {
     public:
+        LimiterBase(const TwistControllerParams& tc_params, const KDL::Chain& chain) : tc_params_(tc_params), chain_(chain)
+        {}
+
+        virtual ~LimiterBase() {}
+
         /**
          * Pure virtual method to mark as interface method which has to be implemented in inherited classes.
          * The intention is to implement a method which enforces limits to the q_dot_out vector according to
@@ -47,13 +52,9 @@ class LimiterBase
          */
         virtual KDL::JntArray enforceLimits(const KDL::JntArray& q_dot_ik, const KDL::JntArray& q) const = 0;
 
-        virtual ~LimiterBase() = 0;
-
     protected:
-        LimiterBase(const TwistControllerParams &tcParams, const KDL::Chain &chain);
-
-        const TwistControllerParams &tcParams_;
-        const KDL::Chain &chain_;
+        const TwistControllerParams& tc_params_;
+        const KDL::Chain& chain_;
 };
 
 #endif /* LIMITER_BASE_H_ */
