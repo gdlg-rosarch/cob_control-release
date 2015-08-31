@@ -2,6 +2,9 @@
 Changelog for package cob_control_mode_adapter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.10 (2015-08-31)
+-------------------
+
 0.6.9 (2015-08-25)
 ------------------
 * more dependency fixes according to review comments
