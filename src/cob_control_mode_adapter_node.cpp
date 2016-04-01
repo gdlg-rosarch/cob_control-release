@@ -8,7 +8,7 @@
 class CobControlModeAdapter
 {
 public:
-    void initialize()
+    bool initialize()
     {
         bool success = false;
 
@@ -36,7 +36,7 @@ public:
         else
         {
             ROS_ERROR("...Load service not available!");
-            return;
+            return false;
         }
 
         while (not ros::service::waitForService("controller_manager/switch_controller", ros::Duration(5.0))){;}
@@ -48,7 +48,7 @@ public:
         else
         {
             ROS_ERROR("...Load service not available!");
-            return;
+            return false;
         }
 
         std::string param="max_command_silence";
@@ -116,20 +116,6 @@ public:
             cmd_vel_sub_ = nh_.subscribe("joint_group_velocity_controller/command", 1, &CobControlModeAdapter::cmd_vel_cb, this);
         }
 
-        ////start position controllers
-        //if(has_pos_controller_)
-        //{
-            //success = switchController(pos_controller_names_, current_controller_names_);
-            //current_control_mode_ = POSITION;
-        //}
-
-        ////start velocity controllers
-        //if(has_vel_controller_)
-        //{
-            //success = switchController(vel_controller_names_, current_controller_names_);
-            //current_control_mode_ = VELOCITY;
-        //}
-
         //start trajectory controller by default
         if(has_traj_controller_)
         {
@@ -139,6 +125,8 @@ public:
 
         update_rate_ = 100;    //[hz]
         timer_ = nh_.createTimer(ros::Duration(1/update_rate_), &CobControlModeAdapter::update, this);
+        
+        return true;
     }
 
     bool loadController(std::string load_controller)
@@ -229,6 +217,8 @@ public:
 
     void update(const ros::TimerEvent& event)
     {
+        if (!nh_.ok()) {return;}
+        
         boost::mutex::scoped_lock lock(mutex_);
 
         ros::Duration period_vel = event.current_real - last_vel_command_;
@@ -340,10 +330,14 @@ int main(int argc, char** argv)
     spinner.start();
 
     CobControlModeAdapter* ccma = new CobControlModeAdapter();
-    ccma->initialize();
+
+    if (!ccma->initialize())
+    {
+        ROS_ERROR("Failed to initialize CobControlModeAdapter");
+        return -1;
+    }
 
     ros::waitForShutdown();
-    delete ccma;
     return 0;
 }
 
