@@ -25,8 +25,9 @@
  *   This package provides a generic Twist controller for the Care-O-bot
  *
  ****************************************************************/
-#ifndef COB_TWIST_CONTROLLER_H
-#define COB_TWIST_CONTROLLER_H
+
+#ifndef COB_TWIST_CONTROLLER_COB_TWIST_CONTROLLER_H
+#define COB_TWIST_CONTROLLER_COB_TWIST_CONTROLLER_H
 
 #include <ros/ros.h>
 
@@ -54,7 +55,7 @@
 #include <cob_twist_controller/TwistControllerConfig.h>
 #include "cob_twist_controller/cob_twist_controller_data_types.h"
 #include <cob_twist_controller/inverse_differential_kinematics_solver.h>
-#include "cob_twist_controller/hardware_interface_types/hardware_interface_type.h"
+#include "cob_twist_controller/controller_interfaces/controller_interface.h"
 #include "cob_twist_controller/callback_data_mediator.h"
 
 class CobTwistController
@@ -69,6 +70,9 @@ private:
 
     ros::Subscriber odometry_sub_;
 
+    ros::Publisher twist_direction_pub_;
+
+    ros::ServiceClient register_link_client_;
     ros::Subscriber obstacle_distance_sub_;
 
     KDL::Chain chain_;
@@ -79,13 +83,11 @@ private:
 
     boost::shared_ptr<KDL::ChainFkSolverVel_recursive> jntToCartSolver_vel_;
     boost::shared_ptr<InverseDifferentialKinematicsSolver> p_inv_diff_kin_solver_;
-    boost::shared_ptr<HardwareInterfaceBase> hardware_interface_;
+    boost::shared_ptr<ControllerInterfaceBase> controller_interface_;
 
     CallbackDataMediator callback_data_mediator_;
 
     tf::TransformListener tf_listener_;
-
-
 
 public:
     CobTwistController()
@@ -96,14 +98,13 @@ public:
     {
         this->jntToCartSolver_vel_.reset();
         this->p_inv_diff_kin_solver_.reset();
-        this->hardware_interface_.reset();
+        this->controller_interface_.reset();
         this->reconfigure_server_.reset();
     }
 
     bool initialize();
-    void run();
 
-    void reinitServiceRegistration();
+    bool registerCollisionLinks();
 
     void reconfigureCallback(cob_twist_controller::TwistControllerConfig& config, uint32_t level);
     void checkSolverAndConstraints(cob_twist_controller::TwistControllerConfig& config);
@@ -114,9 +115,10 @@ public:
     void twistStampedCallback(const geometry_msgs::TwistStamped::ConstPtr& msg);
 
     void solveTwist(KDL::Twist twist);
+    void visualizeTwist(KDL::Twist twist);
 
     boost::recursive_mutex reconfig_mutex_;
     boost::shared_ptr< dynamic_reconfigure::Server<cob_twist_controller::TwistControllerConfig> > reconfigure_server_;
-
 };
-#endif
+
+#endif  // COB_TWIST_CONTROLLER_COB_TWIST_CONTROLLER_H

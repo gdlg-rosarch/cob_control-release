@@ -25,8 +25,9 @@
  *   Declaration of pseudoinverse calculation classes.
  *
  ****************************************************************/
-#ifndef I_PSEUDOINV_CALC_H_
-#define I_PSEUDOINV_CALC_H_
+
+#ifndef COB_TWIST_CONTROLLER_INVERSE_JACOBIAN_CALCULATIONS_INVERSE_JACOBIAN_CALCULATION_H
+#define COB_TWIST_CONTROLLER_INVERSE_JACOBIAN_CALCULATIONS_INVERSE_JACOBIAN_CALCULATION_H
 
 #include "cob_twist_controller/inverse_jacobian_calculations/inverse_jacobian_calculation_base.h"
 
@@ -34,6 +35,10 @@
 class PInvBySVD : public IPseudoinverseCalculator
 {
     public:
+        /** Implementation of calculate member
+         * See base for more information on parameters
+         */
+        virtual Eigen::MatrixXd calculate(const Eigen::MatrixXd& jacobian) const;
 
         /** Implementation of calculate member
          * See base for more information on parameters
@@ -50,6 +55,10 @@ class PInvBySVD : public IPseudoinverseCalculator
 class PInvDirect : public IPseudoinverseCalculator
 {
     public:
+        /** Implementation of calculate member
+         * See base for more information on parameters
+         */
+        virtual Eigen::MatrixXd calculate(const Eigen::MatrixXd& jacobian) const;
 
         /** Implementation of calculate member
          * See base for more information on parameters
@@ -62,5 +71,4 @@ class PInvDirect : public IPseudoinverseCalculator
 };
 /* END PInvDirect ************************************************************************************************/
 
-
-#endif /* I_PSEUDOINV_CALC_H_ */
+#endif  // COB_TWIST_CONTROLLER_INVERSE_JACOBIAN_CALCULATIONS_INVERSE_JACOBIAN_CALCULATION_H
