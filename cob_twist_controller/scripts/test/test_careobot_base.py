@@ -47,7 +47,7 @@ from data_collection import OdometryDataKraken
 def init_dyn_recfg():
     cli = tcc.TwistControllerReconfigureClient()
     cli.init()
-    cli.set_config_param(tcc.HW_IF_TYPE, tcc.TwistController_VELOCITY_INTERFACE)
+    cli.set_config_param(tcc.CTRL_IF, tcc.TwistController_VELOCITY_INTERFACE)
 
     cli.set_config_param(tcc.NUM_FILT, False)
     cli.set_config_param(tcc.DAMP_METHOD, tcc.TwistController_CONSTANT)
@@ -75,7 +75,7 @@ def init_dyn_recfg():
     cli.set_config_param(tcc.DAMP_JLA, 0.00001)
 
     cli.set_config_param(tcc.KIN_EXT, tcc.TwistController_BASE_ACTIVE)
-    cli.set_config_param(tcc.BASE_RATIO, 0.05)
+    cli.set_config_param(tcc.EXT_RATIO, 0.05)
     cli.set_config_param(tcc.KEEP_DIR, True)
     cli.set_config_param(tcc.ENF_VEL_LIM, True)
     cli.set_config_param(tcc.ENF_POS_LIM, False)  # To show that joint pos limits are violated if possible.
