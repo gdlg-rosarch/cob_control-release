@@ -29,9 +29,8 @@
 #include <map>
 #include <ros/ros.h>
 #include <visualization_msgs/MarkerArray.h>
-#include "cob_obstacle_distance/ObstacleDistances.h"
-#include "cob_obstacle_distance/ObstacleDistance.h"
-
+#include "cob_control_msgs/ObstacleDistance.h"
+#include "cob_control_msgs/ObstacleDistances.h"
 
 class DebugObstacleDistance
 {
@@ -52,17 +51,17 @@ public:
             return -1;
         }
 
-        marker_pub_ = this->nh_.advertise<visualization_msgs::MarkerArray>("obstacle_distance/debug", 1, true);
+        marker_pub_ = this->nh_.advertise<visualization_msgs::MarkerArray>("obstacle_distance/distance_markers", 1, true);
         obstacle_distances_sub_ = this->nh_.subscribe("obstacle_distance", 1, &DebugObstacleDistance::obstacleDistancesCallback, this);
 
         return 0;
     }
 
 
-    void obstacleDistancesCallback(const cob_obstacle_distance::ObstacleDistances::ConstPtr& msg)
+    void obstacleDistancesCallback(const cob_control_msgs::ObstacleDistances::ConstPtr& msg)
     {
         visualization_msgs::MarkerArray marker_array;
-        std::map<std::string, cob_obstacle_distance::ObstacleDistance> relevant_obstacle_distances;
+        std::map<std::string, cob_control_msgs::ObstacleDistance> relevant_obstacle_distances;
 
         for(uint32_t i=0; i<msg->distances.size(); i++)
         {
@@ -80,7 +79,7 @@ public:
             }
         }
 
-        for(std::map<std::string, cob_obstacle_distance::ObstacleDistance>::const_iterator it = relevant_obstacle_distances.begin();
+        for(std::map<std::string, cob_control_msgs::ObstacleDistance>::const_iterator it = relevant_obstacle_distances.begin();
                 it != relevant_obstacle_distances.end(); ++it)
         {
 
@@ -130,9 +129,9 @@ public:
             marker_distance.scale.z = 0.1;
 
             marker_distance.color.a = 1.0;
-//            marker_distance.color.r = 1.0;
-//            marker_distance.color.g = 1.0;
-//            marker_distance.color.b = 1.0;
+            //marker_distance.color.r = 1.0;
+            //marker_distance.color.g = 1.0;
+            //marker_distance.color.b = 1.0;
             marker_distance.color.r = 0.0;
             marker_distance.color.g = 0.0;
             marker_distance.color.b = 0.0;
