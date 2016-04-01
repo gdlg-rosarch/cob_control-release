@@ -42,7 +42,6 @@ class IMarkerShape
 {
     protected:
         static uint32_t class_ctr_;
-        bool is_drawn_; ///> If the marker shape has already been drawn or not.
         visualization_msgs::Marker marker_;
         geometry_msgs::Pose origin_;
         bool drawable_; ///> If the marker shape is even drawable or not.
@@ -58,10 +57,11 @@ class IMarkerShape
          virtual geometry_msgs::Pose getMarkerPose() const = 0;
          virtual geometry_msgs::Pose getOriginRelToFrame() const = 0;
 
+
          /**
           * Decide whether the marker shape can be drawn or not. E.g. self collision frames need not to be drawn again as they are
           * available in rviz -> robot model -> collision enabled.
-          * @param can_be_drawn
+          * @param can_be_drawn: Decide whether the marker shall be drawn or not.
           */
          inline void setDrawable(bool can_be_drawn)
          {
@@ -71,16 +71,6 @@ class IMarkerShape
          inline bool isDrawable()
          {
              return this->drawable_;
-         }
-
-         inline void setDrawn()
-         {
-             this->is_drawn_ = true;
-         }
-
-         inline bool isDrawn() const
-         {
-             return this->is_drawn_;
          }
 
          virtual ~IMarkerShape() {}
