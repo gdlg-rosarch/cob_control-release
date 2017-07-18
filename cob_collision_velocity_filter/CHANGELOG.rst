@@ -2,6 +2,34 @@
 Changelog for package cob_collision_velocity_filter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.15 (2017-07-18)
+-------------------
+* manually fix changelog
+* Contributors: ipa-fxm
+
+0.6.14 (2016-10-10)
+-------------------
+
+0.6.13 (2016-10-10)
+-------------------
+
+0.6.12 (2016-10-10)
+-------------------  
+* Integrate costmap in velocity filter
+* Added public nodehandle
+* Renamed incoming command topic to command_in
+* Code reformat with ROS Style
+* Little fixes
+* Removed parameter for topic
+* Cleanup
+* Integrated costmap in collision_velocity_filter node
+* Intermediate state
+* Added parameter "teleop_topic" and removed costmap running check for now.
+* Added costmap_2d to CMakeLists
+* Integrated costmap in cob_collision_velocity_filter node
+* Integrate costmap in cob_collision_velocity_filter (first commit)
+* Contributors: mig-em
+
 0.6.11 (2016-04-01)
 -------------------
 
