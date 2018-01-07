@@ -1,29 +1,20 @@
 /*
- * \file
+ * Copyright 2017 Fraunhofer Institute for Manufacturing Engineering and Automation (IPA)
  *
- * \note
- *   Copyright (c) 2014 \n
- *   Fraunhofer Institute for Manufacturing Engineering
- *   and Automation (IPA) \n\n
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *****************************************************************
- *
- * \note
- *   Project name: care-o-bot
- * \note
- *   ROS stack name: cob_control
- * \note
- *   ROS package name: cob_obstacle_distance
- *
- * \author
- *   Author: Marco Bezzon, email: Marco.Bezzon@ipa.fraunhofer.de
- *
- * \date Date of creation: July, 2015
- *
- * \brief
- *   Definition of a base class for mesh file parsers.
- *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
+
 #ifndef PARSER_BASE_HPP_
 #define PARSER_BASE_HPP_
 
@@ -74,7 +65,7 @@ class ParserBase
         int8_t createBVH(fcl::BVHModel<T>& bvh);
 
         template <typename T>
-        int8_t createBVH(std::shared_ptr<fcl::BVHModel<T> > ptr_bvh);
+        int8_t createBVH(boost::shared_ptr<fcl::BVHModel<T> > ptr_bvh);
 };
 
 
@@ -106,7 +97,7 @@ int8_t ParserBase::createBVH(fcl::BVHModel<T>& bvh)
 }
 
 template <typename T>
-int8_t ParserBase::createBVH(std::shared_ptr<fcl::BVHModel<T> > ptr_bvh)
+int8_t ParserBase::createBVH(boost::shared_ptr<fcl::BVHModel<T> > ptr_bvh)
 {
     int8_t success = -1;
     std::vector<TriangleSupport> tri_vec;
